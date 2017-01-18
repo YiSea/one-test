@@ -2,11 +2,9 @@ package com.one.thread.cuncurrenttools;
 
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.lang.Character.UnicodeScript;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +34,7 @@ public class LogService {
 	private final BlockingQueue<String> queue;
 	private final LoggerThread loggerThread;
 	private final PrintWriter writer;
-	@GuardedBy("this") private boolean isShutdown;
+	@GuardedBy("this") private boolean isShutdown;// @GuardedBy 注解在httpcore-4.4.5中居然没了。。
 	@GuardedBy("this") private int reservations;
 
 	public LogService(Writer writer){
