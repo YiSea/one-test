@@ -45,21 +45,22 @@ public class BoundedBufferTest extends TestCase {
 		Thread taker = new Thread(){
 			public void run(){
 				try{
-					int unused = bb.take();
-					fail();
+					int unused = bb.take(); // 应该在这里发生阻塞中断
+					fail(); 				// 到达这里，法儿说明没有阻塞中断，是不真长的，故失败！
 				}catch (InterruptedException success){
 					// 中断意味着达到目的，成功！
+					System.out.println("..Interrupted.." + success.getMessage());
 				}
 			}
 		};
 		
 		try {
 			taker.start();
-			Long LOCKUP_DETECT_TIMEOUT = 10l;// 寓意为何~
+			Long LOCKUP_DETECT_TIMEOUT = 10000l;// 寓意为何~
 			Thread.sleep(LOCKUP_DETECT_TIMEOUT);
-			taker.interrupt();
-			taker.join(LOCKUP_DETECT_TIMEOUT);
-			assertFalse(taker.isAlive());
+			taker.interrupt(); 	// 使得availableItems.acquire();阻塞终止，抛出中断异常,线程结束。
+			taker.join(LOCKUP_DETECT_TIMEOUT);// 意义？
+			assertFalse(taker.isAlive());	// 取不到东西，线程已经阻塞中断，
 		} catch (Exception unexpected) {
 			// 意料之外的异常，失败!
 			fail();

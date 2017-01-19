@@ -28,12 +28,12 @@ public class BoundedBuffer<E> {
 	}
 	
 	public boolean isEmpty(){
-		System.out.println("isEmpty");
+//		System.out.println("isEmpty");
 		return availableItems.availablePermits() == 0;
 	}
 	
 	public boolean isFull(){
-		System.out.println("isFull");
+//		System.out.println("isFull");
 		return availableSpaces.availablePermits() == 0;
 	}
 	
@@ -44,7 +44,9 @@ public class BoundedBuffer<E> {
 	}
 	
 	public E take() throws InterruptedException{
+		System.out.println("availableItems.acquire....");
 		availableItems.acquire();
+		System.out.println("availableItems.acquire .. over!");
 		E item = doExtract();
 		return item;
 	}
