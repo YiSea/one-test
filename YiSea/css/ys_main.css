@@ -1,0 +1,78 @@
+	body{
+ 			background-color:black;
+		}
+		
+		#body{
+ 		}
+		
+		#bd{
+ 			font-size:20px;
+			text-decoration:none;
+		}
+		
+		#title{
+			font-size:30px;
+			color:white;
+			text-decoration:none;
+		}
+		
+		#addMenu{			
+			width:20px;
+			height:20px;
+			color:white;
+			background-color:black;
+			border-left:0px;
+			border-top:0px;
+			border-right:0px;
+			border-bottom:0px;
+			border-color:white;
+		}
+		
+		img{
+			width:100px;
+			height:40px;
+		}
+		
+		#yisea{
+			align:center;
+			font-size:15px;
+			width:450px;
+			height:40px;
+			color:blue;
+		}
+		
+		#go{
+ 			font-size:15px;
+			width:60px;
+			height:40px;
+			color:white;
+			background-color:blue;
+			border-left:0px;
+			border-top:0px;
+			border-right:0px;
+			border-bottom:0px;
+ 		}
+		
+		#add_url{
+			align:center;
+			display:none;
+		}
+		
+		a{
+			text-decoration:none;
+			color:white;
+			font-size:1px;
+		}
+		
+		#borm11{
+			align:center;
+			display:block;
+			color:blue;
+		}
+  
+		#bottom{
+			color:white;
+			font-size:10px;
+ 			text-align:center;
+ 			margin:380px;
+		}
