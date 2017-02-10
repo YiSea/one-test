@@ -3,7 +3,6 @@ package com.one.thread.test;
 import java.util.concurrent.Semaphore;
 
 import org.apache.http.annotation.GuardedBy;
-import org.junit.runner.notification.RunListener.ThreadSafe;
 
 /**
  * 
@@ -16,7 +15,7 @@ import org.junit.runner.notification.RunListener.ThreadSafe;
 
 //@ThreadSafe // 啥玩意~
 public class BoundedBuffer<E> {
-	private final Semaphore availableItems, availableSpaces;
+	private final Semaphore availableItems, availableSpaces;		// 
 	@GuardedBy("this") private final E[] items;
 	@GuardedBy("this") private int putPosition = 0, takePosition = 0;
 	
@@ -38,16 +37,19 @@ public class BoundedBuffer<E> {
 	}
 	
 	public void put(E x) throws InterruptedException {
+		System.out.println(Thread.currentThread().getName() + "puting...");
 		availableSpaces.acquire();
 		doInsert(x);
 		availableItems.release();
+		System.out.println(Thread.currentThread().getName() + "put over!");
 	}
 	
 	public E take() throws InterruptedException{
-		System.out.println("availableItems.acquire....");
+		System.out.println(Thread.currentThread().getName() + ":taking...");
 		availableItems.acquire();
-		System.out.println("availableItems.acquire .. over!");
 		E item = doExtract();
+		availableSpaces.release();
+		System.out.println(Thread.currentThread().getName() + "take over!");
 		return item;
 	}
 
