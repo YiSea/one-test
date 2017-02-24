@@ -32,20 +32,24 @@ public class CharsetDetectDemo {
     }
 	
 	public static void main(String args[]){
-		File file = new File("C:\\Users\\admin\\Desktop\\detail-1.SCD");
+//		File file = new File("C:\\Users\\admin\\Desktop\\detail-1.SCD");
 		try {
-			InputStream is = new FileInputStream(file);
+//			InputStream is = new FileInputStream(file);
 			byte[] bytes = new byte[10000000];
-			int i = 0;
-			while((i = is.read(bytes)) != -1){
-				if(bytes != null){
-					String charset = detect(bytes);
-					if(charset == null || "null".equals(charset)){
-						System.out.println(new String(bytes));
-					}
-					System.out.println(charset);
-				}
-			}
+			bytes = "GENBJ&kwds=大病医疗保险&dgid=9827".getBytes();
+			String charset = detect(bytes);
+			System.out.println(charset);
+
+//			int i = 0;
+//			while((i = is.read(bytes)) != -1){
+//				if(bytes != null){
+//					String charset = detect(bytes);
+//					if(charset == null || "null".equals(charset)){
+//						System.out.println(new String(bytes));
+//					}
+//					System.out.println(charset);
+//				}
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
