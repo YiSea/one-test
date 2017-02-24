@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>test</groupId>
-	<artifactId>onetest</artifactId>
+	<artifactId>one-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>onetest</name>
+	<name>one-test</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -56,6 +56,14 @@
 		    <artifactId>juniversalchardet</artifactId>
 		    <version>1.0.3</version>
 		</dependency>
+		
+		<!-- CGLIB : ?? https://mvnrepository.com/artifact/cglib/cglib -->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.2.4</version>
+		</dependency>
+				
 
 	</dependencies>
 </project>
