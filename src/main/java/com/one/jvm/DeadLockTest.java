@@ -28,7 +28,7 @@ public class DeadLockTest {
 			 * 将直接返回缓存中的对象，也就是说，代码中调用了上百次Integer.valueOf()方法，
 			 * 一共就返回了两个不同的对象。
 			 */
-			synchronized (Integer.valueOf(a)) {  
+			synchronized (Integer.valueOf(a)) {
 				synchronized (Integer.valueOf(b)) {
 					System.out.println(a + b);
 				}

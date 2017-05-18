@@ -6,10 +6,12 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 /**
- * 线程池newFixedThreadPool的使用。
  * 
- * @author 赵学庆，Java世纪网(java2000.net)
- * 
+  * @Package com.one.thread 
+  * @ClassName ThreadPoolTest.java
+  * @author jun.wu  
+  * @date 2017年3月27日 下午5:57:50 
+  * @Description: 此处添加类描述……
  */
 public class ThreadPoolTest {
   public static void main(String args[]) {

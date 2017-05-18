@@ -1,9 +1,5 @@
 package com.one.String;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-
 import org.mozilla.universalchardet.UniversalDetector;
 
 /**

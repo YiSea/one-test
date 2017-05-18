@@ -5,14 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-public class Life {
-	public static void main(String args[]) throws IOException{
+public class Life extends OneTest {
+	public static void main(String args[]){
+		new Life().lala();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("go");
-		br.readLine();
+		try {
+			br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		lineLife();
 	}
-	
 	public static void lineLife(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("").append("").append("").append("").append("/");

@@ -13,6 +13,36 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<!-- 指定Maven的版本，并且指定Maven使用的jdk版本 -->
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            
+            <!-- mvn打包 配置 -->
+            <plugin>    
+                <artifactId>maven-assembly-plugin</artifactId>    
+                <configuration>    
+                  <span style="color:#FF0000;">  <archive>    
+                        <manifest>    
+                            <mainClass>com.allen.capturewebdata.Main</mainClass>    
+                        </manifest>    
+                    </archive>  </span>  
+                    <descriptorRefs>    
+                        <descriptorRef>jar-with-dependencies</descriptorRef>    
+                    </descriptorRefs>    
+                </configuration>    
+            </plugin>
+        </plugins>
+    </build>
 
 	<dependencies>
 		<!-- 单元测试 -->
@@ -63,7 +93,47 @@
 		    <artifactId>cglib</artifactId>
 		    <version>3.2.4</version>
 		</dependency>
-				
 
+		<dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.17</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+	    	<version>1.4.7</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-mapreduce-client-core -->
+		<dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-mapreduce-client-core</artifactId>
+		    <version>3.0.0-alpha2</version>
+		    <exclusions>  
+		        <exclusion>  
+		            <groupId>jdk.tools</groupId>  
+		            <artifactId>jdk.tools</artifactId>  
+		        </exclusion>  
+    		</exclusions> 
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
+		<dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-common</artifactId>
+		    <version>3.0.0-alpha2</version>
+		</dependency>
+		
+		<!-- tools.jar包是JDK自带的，pom.xml中依赖的包（hadoop）隐式依赖tools.jar包，而tools.jar并未在库中， -->
+		 <dependency>
+            <groupId>jdk.tools</groupId>
+            <artifactId>jdk.tools</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+   	 	</dependency>
+	
 	</dependencies>
 </project>

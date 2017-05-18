@@ -3,8 +3,29 @@ package com.one.test;
 import java.util.Scanner;
 
 public class OneTest {
+	protected void lala(){
+		System.out.println("lala");
+	}
 	
 	public static void main(String args[]){
+		
+		
+		
+		System.out.println(123/1 %10);
+		System.out.println(123/10 %10);
+		System.out.println(123/100 %10);
+		
+//		System.out.println(0 % 10);
+//		
+//		
+//		System.out.println(Math.pow(3,2));
+//		
+//		flower(); // 花儿
+
+		
+	}
+	
+	public static void flower(){
 		System.out.print("指定最大位数N:");
         Scanner input = new Scanner(System.in);
         int N = input.nextInt();
@@ -25,26 +46,6 @@ public class OneTest {
             }
             System.out.print("\n");
         }
-		
-		
-	/*	String[] regexAttr = new String[]{"[0-9]+"};
-		for(String regex : regexAttr){
-			Pattern patter = Pattern.compile(regex);
-			Matcher matcher = patter.matcher("22人已购买| 月销1232”、 把“已抢光”去掉，保留空，不要置为.  ");
-			while(matcher.find()){
-				// 特殊处理规格 700ml*6 
-				String gg = matcher.group(0);
-				System.out.println(gg);
-			}
-		}
-		*/
-		/*String eva = "010101010101010101";
-		char[] evas = eva.toCharArray();
-		for(char ev : evas){
-			System.out.println(String.valueOf(ev).equals("1"));
-		}*/
-		
-		System.out.println( "over!");
 	}
-
+	
 }

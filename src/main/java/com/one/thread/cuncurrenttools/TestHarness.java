@@ -13,13 +13,15 @@ import javax.xml.soap.Node;
   * @Description: 同步工具类：闭锁
  */
 public class TestHarness implements Runnable{
+	private static Integer all = 0;
 
 	public long timeTasks(int nThreads, final Runnable task) throws InterruptedException{
 		final CountDownLatch startGate = new CountDownLatch(1);
 		final CountDownLatch endGate = new CountDownLatch(nThreads);
-		
+
 		for(int i = 0; i < nThreads; i++){
 			Thread t = new Thread(){
+				private Integer num = 0;
 				public void run(){
 					try {
 						startGate.await();// 我ready了，其他线程兄弟快点，等着呢
@@ -27,6 +29,10 @@ public class TestHarness implements Runnable{
 							task.run();	// go go go
 						} finally {
 							endGate.countDown(); // 结束门-1（我结束了哈，你们记得打卡~）
+						}
+						num = 10;
+						synchronized(all){
+							all += num;
 						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -46,7 +52,6 @@ public class TestHarness implements Runnable{
 		endGate.await(); // 结束门，主线程等待所有线程都结束，方可开门让你走
 		long end = System.nanoTime();
 		return end - start; // 并发时间差
-			
 	}
 
 	@Override
@@ -64,6 +69,8 @@ public class TestHarness implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		System.out.println("all:" + all);
+
 	}
 	
 }

@@ -15,7 +15,7 @@ public class SocketService {
 		try {
 			String req = "";
 			String reponse = "over!";
-			serverSocket = new ServerSocket(8888);
+			serverSocket = new ServerSocket(8889);
 			
 			while(true){
 				Socket socket = serverSocket.accept();
